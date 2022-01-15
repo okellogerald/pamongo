@@ -99,7 +99,7 @@ class _MyAppState extends State<MyApp> {
     await AudioService.init(
       builder: () => ForegroundPlayer(service),
       config: const AudioServiceConfig(
-          androidNotificationChannelId: 'com.example.podcasts_app',
+          androidNotificationChannelId: 'com.example.pamongo',
           androidNotificationChannelName: 'Pamongo',
           androidNotificationIcon: 'drawable/logo_small'),
     );

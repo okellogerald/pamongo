@@ -51,6 +51,35 @@ class EpisodePageBloc extends Cubit<EpisodePageState> {
 
   void share(String id) async => await service.share(ContentType.episode, id);
 
+  void toggleSortStyle(int index) {
+    var supp = state.supplements;
+    emit(EpisodePageState.loading(supp));
+
+    final episodeList = supp.otherEpisodes;
+    final sortStyle = supp.sortStyle;
+    final isOldestFirstSorted = index == 2;
+
+    if (isOldestFirstSorted) {
+      if (sortStyle == SortStyles.latestFirst) {
+        final normalList = episodeList.reversed.toList();
+        supp = supp.copyWith(
+            sortStyle: SortStyles.oldestFirst, otherEpisodes: normalList);
+        emit(EpisodePageState.content(supp));
+        return;
+      }
+    } else {
+      if (sortStyle == SortStyles.oldestFirst) {
+        final reversedList = episodeList.reversed.toList();
+        supp = supp.copyWith(
+            sortStyle: SortStyles.latestFirst, otherEpisodes: reversedList);
+        emit(EpisodePageState.content(supp));
+        return;
+      }
+    }
+
+    emit(EpisodePageState.content(supp));
+  }
+
   _handleContentStream(ProgressIndicatorContent content) async {
     var supp = state.supplements;
     emit(EpisodePageState.loading(supp));

@@ -115,8 +115,9 @@ class _EpisodePageState extends State<EpisodePage> {
                   supp.otherEpisodes.length == 1
                       ? Container()
                       : SortButton(
-                          sortStyle: SortStyles.latestFirst,
-                          onSelectedCallback: (_) {}),
+                          sortStyle: supp.sortStyle,
+                          onSelectedCallback: bloc.toggleSortStyle,
+                        ),
                 ],
               ),
             ],

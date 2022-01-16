@@ -27,18 +27,29 @@ class EpisodePageBloc extends Cubit<EpisodePageState> {
         isLoadingOthers: true);
     emit(EpisodePageState.content(supp));
 
-    final series = await PodcastsRepository.getSeriesById(_episode.seriesId);
-    final otherEpisodes = series.episodeList;
-    otherEpisodes.removeWhere((e) => e.id == _episode.id);
-    otherEpisodes.sort((a, b) => a.episodeNumber.compareTo(b.episodeNumber));
+    try {
+      final series = await PodcastsRepository.getSeriesById(_episode.seriesId);
+      final otherEpisodes = series.episodeList;
+      otherEpisodes.removeWhere((e) => e.id == _episode.id);
+      otherEpisodes.sort((a, b) => a.episodeNumber.compareTo(b.episodeNumber));
 
-    supp = supp.copyWith(
-      activeId: id,
-      playerState: playerState,
-      episode: _episode,
-      isLoadingOthers: false,
-      otherEpisodes: otherEpisodes,
-    );
+      supp = supp.copyWith(
+        activeId: id,
+        playerState: playerState,
+        episode: _episode,
+        isLoadingOthers: false,
+        otherEpisodes: otherEpisodes,
+        apiError: null,
+      );
+    } on ApiError catch (e) {
+      supp = supp.copyWith(
+        activeId: id,
+        playerState: playerState,
+        episode: _episode,
+        isLoadingOthers: false,
+        apiError: e,
+      );
+    }
     emit(EpisodePageState.content(supp));
   }
 

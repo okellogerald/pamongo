@@ -96,7 +96,6 @@ class ProgressIndicatorBloc extends Cubit<ProgressIndicatorState> {
   }
 
   void toggleVisibilityStatus() {
-    log('called in here');
     emit(ProgressIndicatorState.loading(state.content, state.isHiding));
     final isHiding = !state.isHiding;
     emit(ProgressIndicatorState.content(state.content, isHiding));

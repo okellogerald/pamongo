@@ -76,6 +76,21 @@ class _EpisodePageState extends State<EpisodePage> {
   _buildOtherEpisodes(EpisodePageSupplements supp) {
     if (supp.isLoadingOthers) return const AppLoadingIndicator();
     if (supp.otherEpisodes.isEmpty) return Container();
+    if (!supp.isLoadingOthers && supp.apiError != null) {
+      return Container(
+          color: Colors.grey.shade200,
+          margin: EdgeInsets.only(top: 30.dh),
+          height: 250.dh,
+          alignment: Alignment.center,
+          child: Column(
+            children: [
+              Icon(EvaIcons.wifiOff, size: 32.dw, color: AppColors.errorColor),
+              SizedBox(height: 15.dh),
+              AppText('failed to load other episodes from the same series',
+                  size: 14.w),
+            ],
+          ));
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

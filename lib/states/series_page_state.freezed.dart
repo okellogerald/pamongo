@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'series_page_state.dart';
@@ -210,13 +211,16 @@ class _$_Loading implements _Loading {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Loading &&
-            (identical(other.series, series) || other.series == series) &&
-            (identical(other.supplements, supplements) ||
-                other.supplements == supplements));
+            const DeepCollectionEquality().equals(other.series, series) &&
+            const DeepCollectionEquality()
+                .equals(other.supplements, supplements));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, series, supplements);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(series),
+      const DeepCollectionEquality().hash(supplements));
 
   @JsonKey(ignore: true)
   @override
@@ -366,13 +370,16 @@ class _$_Content implements _Content {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Content &&
-            (identical(other.series, series) || other.series == series) &&
-            (identical(other.supplements, supplements) ||
-                other.supplements == supplements));
+            const DeepCollectionEquality().equals(other.series, series) &&
+            const DeepCollectionEquality()
+                .equals(other.supplements, supplements));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, series, supplements);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(series),
+      const DeepCollectionEquality().hash(supplements));
 
   @JsonKey(ignore: true)
   @override
@@ -522,13 +529,16 @@ class _$_Failed implements _Failed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Failed &&
-            (identical(other.series, series) || other.series == series) &&
-            (identical(other.supplements, supplements) ||
-                other.supplements == supplements));
+            const DeepCollectionEquality().equals(other.series, series) &&
+            const DeepCollectionEquality()
+                .equals(other.supplements, supplements));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, series, supplements);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(series),
+      const DeepCollectionEquality().hash(supplements));
 
   @JsonKey(ignore: true)
   @override

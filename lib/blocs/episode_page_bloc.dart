@@ -10,20 +10,40 @@ class EpisodePageBloc extends Cubit<EpisodePageState> {
   }
 
   Future<void> init({Episode? episode, episodeId = ''}) async {
-    emit(EpisodePageState.loading(state.episode, state.supplements));
+    var supp = state.supplements;
+    emit(EpisodePageState.loading(supp));
 
     final content = service.getCurrentContent;
     final id = content.getCurrentEpisode.id;
     final playerState = content.playerState;
 
-    episode = episode ?? await PodcastsRepository.getEpisodeById(episodeId);
+    final _episode =
+        episode ?? await PodcastsRepository.getEpisodeById(episodeId);
 
-    final supplements =
-        state.supplements.copyWith(activeId: id, playerState: playerState);
-    emit(EpisodePageState.content(episode, supplements));
+    supp = supp.copyWith(
+        activeId: id,
+        playerState: playerState,
+        episode: _episode,
+        isLoadingOthers: true);
+    emit(EpisodePageState.content(supp));
+
+    final series = await PodcastsRepository.getSeriesById(_episode.seriesId);
+    final otherEpisodes = series.episodeList;
+    otherEpisodes.removeWhere((e) => e.id == _episode.id);
+    otherEpisodes.sort((a, b) => a.episodeNumber.compareTo(b.episodeNumber));
+
+    supp = supp.copyWith(
+      activeId: id,
+      playerState: playerState,
+      episode: _episode,
+      isLoadingOthers: false,
+      otherEpisodes: otherEpisodes,
+    );
+    emit(EpisodePageState.content(supp));
   }
 
-  void play() async => await service.play([state.episode]);
+  void play({Episode? episode}) async =>
+      await service.play([episode ?? state.supplements.episode]);
 
   void togglePlayerStatus() async => await service.toggleStatus();
 
@@ -32,13 +52,14 @@ class EpisodePageBloc extends Cubit<EpisodePageState> {
   void share(String id) async => await service.share(ContentType.episode, id);
 
   _handleContentStream(ProgressIndicatorContent content) async {
+    var supp = state.supplements;
+    emit(EpisodePageState.loading(supp));
+
     final content = service.getCurrentContent;
     final id = content.episodeList[content.currentIndex].id;
     final playerState = content.playerState;
-    emit(EpisodePageState.loading(state.episode, state.supplements));
 
-    final supplements =
-        state.supplements.copyWith(activeId: id, playerState: playerState);
-    emit(EpisodePageState.content(state.episode, supplements));
+    supp = supp.copyWith(activeId: id, playerState: playerState);
+    emit(EpisodePageState.content(supp));
   }
 }

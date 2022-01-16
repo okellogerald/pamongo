@@ -150,7 +150,8 @@ class _SeriesPageState extends State<SeriesPage> {
                 itemBuilder: (_, index) => SeriesPageEpisodeTile(
                     index: index,
                     episode: episodeList[index],
-                    supplements: supplements,
+                    activeId: supplements.activeId,
+                    playerState: supplements.playerState,
                     resumeCallback: bloc.togglePlayerStatus,
                     playCallback: bloc.play,
                     markAsDoneCallback: bloc.markAsPlayed,

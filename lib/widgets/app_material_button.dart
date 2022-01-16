@@ -29,14 +29,23 @@ class _AppMaterialButtonState extends State<AppMaterialButton>
   void initState() {
     super.initState();
     controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 300));
+        vsync: this, duration: const Duration(milliseconds: 200));
     animation = ColorTween(
             begin: AppColors.backgroundColor, end: Colors.grey.withOpacity(.10))
         .animate(controller)
       ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) controller.reverse();
-        if (status == AnimationStatus.reverse) widget.onPressed();
+        if (status == AnimationStatus.completed) {
+          controller.reverse();
+          widget.onPressed();
+        }
+        // if (status == AnimationStatus.dismissed)
       });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:podcasts/widgets/series_page_episode_tile.dart';
 import '../source.dart';
 
 class EpisodePage extends StatefulWidget {
@@ -43,8 +44,9 @@ class _EpisodePageState extends State<EpisodePage> {
         });
   }
 
-  Widget _buildContent(Episode episode, Supplements supplements) {
-    final shouldLeaveSpace = !supplements.playerState.isInactive;
+  Widget _buildContent(EpisodePageSupplements supp) {
+    final shouldLeaveSpace = !supp.playerState.isInactive;
+    final episode = supp.episode;
     final isOpenedUsingLink = widget.episode == null;
 
     return AppListView(
@@ -55,19 +57,111 @@ class _EpisodePageState extends State<EpisodePage> {
         PageEpisodeTile(
           page: Pages.episodePage,
           episode: episode,
-          supplements: supplements,
+          activeId: supp.activeId,
+          playerState: supp.playerState,
           resumeCallback: bloc.togglePlayerStatus,
           playCallback: bloc.play,
           markAsDoneCallback: bloc.markAsPlayed,
           shareCallback: bloc.share,
         ),
+        _buildOtherEpisodes(supp),
         shouldLeaveSpace ? SizedBox(height: 70.dh) : SizedBox(height: 10.dh)
       ],
     );
   }
 
-  Widget _buildLoading(Episode episode, Supplements supplements) =>
+  Widget _buildLoading(EpisodePageSupplements supplements) =>
       const AppLoadingIndicator();
+
+  _buildOtherEpisodes(EpisodePageSupplements supp) {
+    if (supp.isLoadingOthers) return const AppLoadingIndicator();
+    if (supp.otherEpisodes.isEmpty) return Container();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: 1.5.dw,
+          color: AppColors.dividerColor,
+          margin: EdgeInsets.only(bottom: 15.dh),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 15.dw, right: 6.dw),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AppText(
+                'Other ${supp.otherEpisodes.length == 1 ? 'episode' : 'episodes'} in :',
+                size: 15.w,
+                color: AppColors.accentColor,
+                weight: FontWeight.w600,
+                alignment: TextAlign.start,
+              ),
+              SizedBox(height: 10.dh),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: AppText(
+                      '${supp.episode.seriesName}.',
+                      size: 20.w,
+                      color: AppColors.textColor2,
+                      weight: FontWeight.w600,
+                      alignment: TextAlign.start,
+                      maxLines: 3,
+                    ),
+                  ),
+                  SizedBox(width: 15.dw),
+                  supp.otherEpisodes.length == 1
+                      ? Container()
+                      : SortButton(
+                          sortStyle: SortStyles.latestFirst,
+                          onSelectedCallback: (_) {}),
+                ],
+              ),
+            ],
+          ),
+        ),
+        _buildEpisodes(supp),
+      ],
+    );
+  }
+
+  _buildEpisodes(EpisodePageSupplements supp) {
+    return ListView.builder(
+      itemCount: supp.otherEpisodes.length,
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemBuilder: (_, index) {
+        final episode = supp.otherEpisodes[index];
+        final isFirst = index == 0;
+        return AppMaterialButton(
+          onPressed: () {
+            AppListViewState.refreshListView();
+            bloc.init(episode: episode);
+          },
+          child: Container(
+            decoration: BoxDecoration(
+                border: Border(
+                    top: isFirst
+                        ? const BorderSide(width: 0, color: Colors.transparent)
+                        : BorderSide(
+                            width: 1.5.dw, color: AppColors.dividerColor))),
+            child: SeriesPageEpisodeTile(
+              episode: episode,
+              playCallback: (_) => bloc.play(episode: episode),
+              markAsDoneCallback: bloc.markAsPlayed,
+              shareCallback: bloc.share,
+              playerState: supp.playerState,
+              activeId: supp.activeId,
+              index: 0,
+              resumeCallback: bloc.togglePlayerStatus,
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   /// pushes to homepage if app is opened using the link, otherwise normal
   /// behaviour applies.

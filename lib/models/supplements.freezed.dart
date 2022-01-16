@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'supplements.dart';
@@ -155,10 +156,10 @@ class _$_Supplements implements _Supplements {
       this.apiError,
       required this.playerState});
 
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String activeId;
-  @JsonKey(defaultValue: SortStyles.oldestFirst)
+  @JsonKey()
   @override
   final SortStyles sortStyle;
   @override
@@ -176,19 +177,20 @@ class _$_Supplements implements _Supplements {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Supplements &&
-            (identical(other.activeId, activeId) ||
-                other.activeId == activeId) &&
-            (identical(other.sortStyle, sortStyle) ||
-                other.sortStyle == sortStyle) &&
-            (identical(other.apiError, apiError) ||
-                other.apiError == apiError) &&
-            (identical(other.playerState, playerState) ||
-                other.playerState == playerState));
+            const DeepCollectionEquality().equals(other.activeId, activeId) &&
+            const DeepCollectionEquality().equals(other.sortStyle, sortStyle) &&
+            const DeepCollectionEquality().equals(other.apiError, apiError) &&
+            const DeepCollectionEquality()
+                .equals(other.playerState, playerState));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, activeId, sortStyle, apiError, playerState);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(activeId),
+      const DeepCollectionEquality().hash(sortStyle),
+      const DeepCollectionEquality().hash(apiError),
+      const DeepCollectionEquality().hash(playerState));
 
   @JsonKey(ignore: true)
   @override

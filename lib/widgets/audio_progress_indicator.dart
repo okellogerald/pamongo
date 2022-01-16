@@ -33,42 +33,43 @@ class AudioProgressIndicatorState extends State<AudioProgressIndicator> {
         },
         builder: (_, state) {
           return state.when(
-              active: _buildContent,
-              failed: _buildFailed,
-              initial: _buildInitial);
+            content: _buildContent,
+            failed: _buildFailed,
+            loading: _buildContent,
+          );
         });
   }
 
   Widget _buildContent(ProgressIndicatorContent content, bool isHiding) {
-    return !isHiding
-        ? Stack(
-            children: [
-              Positioned(
-                top: initialOffset,
-                child: SizedBox(
-                  height: 60.dh,
-                  width: MediaQuery.of(context).size.width,
-                  child: Material(
-                    child: GestureDetector(
-                      onTap: _onTap,
-                      child: _indicatorContent(content),
-                    ),
-                  ),
-                ),
+    final isInactive = content.playerState == inactiveState;
+    if (isInactive || isHiding) return Container();
+
+    return Stack(
+      children: [
+        Positioned(
+          top: initialOffset,
+          child: SizedBox(
+            height: 60.dh,
+            width: MediaQuery.of(context).size.width,
+            child: Material(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                      CustomPageTransition(child: PlayingEpisodePage(bloc)));
+                  bloc.toggleVisibilityStatus();
+                },
+                child: _indicatorContent(content),
               ),
-            ],
-          )
-        : Container();
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Widget _buildFailed(
-      ProgressIndicatorContent content, bool isHiding, AudioError error) {
-    return _buildContent(content, isHiding);
-  }
-
-  Widget _buildInitial(ProgressIndicatorContent content, bool isHiding) {
-    return Container();
-  }
+          ProgressIndicatorContent content, bool isHiding, AudioError error) =>
+      _buildContent(content, isHiding);
 
   _indicatorContent(ProgressIndicatorContent content) {
     final episode = content.episodeList[content.currentIndex];
@@ -96,7 +97,10 @@ class AudioProgressIndicatorState extends State<AudioProgressIndicator> {
                             fit: BoxFit.contain, height: 25.dh),
                       )
                     : IconButton(
-                        onPressed: bloc.togglePlayerStatus,
+                        onPressed: () {
+                          bloc.togglePlayerStatus();
+                          log('reached here');
+                        },
                         padding: EdgeInsets.zero,
                         icon: Icon(
                             playerState.isPlaying
@@ -150,11 +154,5 @@ class AudioProgressIndicatorState extends State<AudioProgressIndicator> {
         timeInSecForIosWeb: 3,
         backgroundColor: AppColors.primaryColor,
         textColor: AppColors.onPrimary);
-  }
-
-  void _onTap() {
-    bloc.toggleVisibilityStatus();
-    Navigator.of(context)
-        .push(CustomPageTransition(child: PlayingEpisodePage(bloc)));
   }
 }

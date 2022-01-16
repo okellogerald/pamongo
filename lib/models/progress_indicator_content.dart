@@ -44,4 +44,7 @@ abstract class ProgressIndicatorContent implements _$ProgressIndicatorContent {
       @Default(0) int currentIndex}) = _ProgressIndicatorContent;
 
   Episode get getCurrentEpisode => episodeList[currentIndex];
+
+  factory ProgressIndicatorContent.empty() =>
+      ProgressIndicatorContent(episodeList: [Episode.empty()]);
 }

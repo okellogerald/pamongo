@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'progress_indicator_content.dart';
@@ -209,21 +210,21 @@ class _$_ProgressIndicatorContent extends _ProgressIndicatorContent {
 
   @override
   final List<Episode> episodeList;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int currentPosition;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int bufferedPosition;
-  @JsonKey(defaultValue: inactiveState)
+  @JsonKey()
   @override
   final IndicatorPlayerState playerState;
-  @JsonKey(defaultValue: SortStyles.oldestFirst)
+  @JsonKey()
   @override
   final SortStyles sortStyle;
   @override
   final AudioError? error;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int currentIndex;
 
@@ -239,29 +240,28 @@ class _$_ProgressIndicatorContent extends _ProgressIndicatorContent {
             other is _ProgressIndicatorContent &&
             const DeepCollectionEquality()
                 .equals(other.episodeList, episodeList) &&
-            (identical(other.currentPosition, currentPosition) ||
-                other.currentPosition == currentPosition) &&
-            (identical(other.bufferedPosition, bufferedPosition) ||
-                other.bufferedPosition == bufferedPosition) &&
-            (identical(other.playerState, playerState) ||
-                other.playerState == playerState) &&
-            (identical(other.sortStyle, sortStyle) ||
-                other.sortStyle == sortStyle) &&
-            (identical(other.error, error) || other.error == error) &&
-            (identical(other.currentIndex, currentIndex) ||
-                other.currentIndex == currentIndex));
+            const DeepCollectionEquality()
+                .equals(other.currentPosition, currentPosition) &&
+            const DeepCollectionEquality()
+                .equals(other.bufferedPosition, bufferedPosition) &&
+            const DeepCollectionEquality()
+                .equals(other.playerState, playerState) &&
+            const DeepCollectionEquality().equals(other.sortStyle, sortStyle) &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            const DeepCollectionEquality()
+                .equals(other.currentIndex, currentIndex));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(episodeList),
-      currentPosition,
-      bufferedPosition,
-      playerState,
-      sortStyle,
-      error,
-      currentIndex);
+      const DeepCollectionEquality().hash(currentPosition),
+      const DeepCollectionEquality().hash(bufferedPosition),
+      const DeepCollectionEquality().hash(playerState),
+      const DeepCollectionEquality().hash(sortStyle),
+      const DeepCollectionEquality().hash(error),
+      const DeepCollectionEquality().hash(currentIndex));
 
   @JsonKey(ignore: true)
   @override

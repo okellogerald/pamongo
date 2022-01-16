@@ -9,7 +9,8 @@ class PageEpisodeTile extends StatelessWidget {
       required this.resumeCallback,
       required this.markAsDoneCallback,
       required this.shareCallback,
-      required this.supplements,
+      required this.activeId,
+      required this.playerState,
       required this.episode,
       required this.page,
       key})
@@ -17,20 +18,18 @@ class PageEpisodeTile extends StatelessWidget {
 
   final Episode episode;
 
-  final Supplements supplements;
+  //final EpisodePageSupplements supplements;
   final void Function(String) markAsDoneCallback, shareCallback;
   final VoidCallback resumeCallback, playCallback;
   final Pages page;
+  final String activeId;
+  final IndicatorPlayerState playerState;
 
   @override
   Widget build(BuildContext context) {
-    final playerState = supplements.playerState;
-    final activeId = supplements.activeId;
-
     final isLoading = playerState.isLoading && activeId == episode.id;
-    final isActive =
-        (playerState.isPlaying || playerState.isPaused) &&
-            activeId == episode.id;
+    final isActive = (playerState.isPlaying || playerState.isPaused) &&
+        activeId == episode.id;
 
     final isOnHomepage = page == Pages.homepage;
 

@@ -41,4 +41,6 @@ abstract class Episode implements _$Episode {
         audioUrl: json['fileUrl'],
         description: json['description']);
   }
+
+  factory Episode.empty() => Episode(date: DateTime.now());
 }

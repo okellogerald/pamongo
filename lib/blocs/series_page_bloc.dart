@@ -36,11 +36,12 @@ class SeriesPageBloc extends Cubit<SeriesPageState> {
   Future<void> play(int index) async {
     var episodeList = state.series.episodeList;
     final isReversed = state.supplements.sortStyle == SortStyles.latestFirst;
+    var _index = index;
     if (isReversed) {
       episodeList = episodeList.reversed.toList();
-      index = episodeList.length - index - 1;
+      _index = episodeList.length - index - 1;
     }
-    await service.play(episodeList, index: index);
+    await service.play(episodeList, index: _index);
   }
 
   void togglePlayerStatus() async => await service.toggleStatus();

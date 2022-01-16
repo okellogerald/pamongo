@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'series.dart';
@@ -215,28 +216,28 @@ class _$_Series extends _Series {
       this.episodeList = const []})
       : super._();
 
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String image;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String name;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String channelName;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String description;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int totalNumberOfEpisodes;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String id;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String channelId;
-  @JsonKey(defaultValue: const [])
+  @JsonKey()
   @override
   final List<Episode> episodeList;
 
@@ -250,17 +251,16 @@ class _$_Series extends _Series {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Series &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.channelName, channelName) ||
-                other.channelName == channelName) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.totalNumberOfEpisodes, totalNumberOfEpisodes) ||
-                other.totalNumberOfEpisodes == totalNumberOfEpisodes) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.channelId, channelId) ||
-                other.channelId == channelId) &&
+            const DeepCollectionEquality().equals(other.image, image) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.channelName, channelName) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other.totalNumberOfEpisodes, totalNumberOfEpisodes) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.channelId, channelId) &&
             const DeepCollectionEquality()
                 .equals(other.episodeList, episodeList));
   }
@@ -268,13 +268,13 @@ class _$_Series extends _Series {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      image,
-      name,
-      channelName,
-      description,
-      totalNumberOfEpisodes,
-      id,
-      channelId,
+      const DeepCollectionEquality().hash(image),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(channelName),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(totalNumberOfEpisodes),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(channelId),
       const DeepCollectionEquality().hash(episodeList));
 
   @JsonKey(ignore: true)

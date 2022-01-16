@@ -5,8 +5,8 @@ part 'episode_page_state.freezed.dart';
 
 @freezed
 class EpisodePageState with _$EpisodePageState {
-  const factory EpisodePageState.loading(Episode episode, Supplements supplements) = _Loading;
-  const factory EpisodePageState.content(Episode episode,Supplements supplements) = _Content;
+  const factory EpisodePageState.loading(EpisodePageSupplements supplements) = _Loading;
+  const factory EpisodePageState.content(EpisodePageSupplements supplements) = _Content;
 
-  factory EpisodePageState.initial() =>  EpisodePageState.content(Episode(date: DateTime.utc(2020)), const Supplements(playerState: inactiveState));
+  factory EpisodePageState.initial() =>  EpisodePageState.content(EpisodePageSupplements.empty());
 }

@@ -1,8 +1,4 @@
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import 'package:flutter/material.dart';
-import 'package:podcasts/themes/app_colors.dart';
-import 'package:podcasts/utils/utils.dart';
-import 'package:podcasts/widgets/widgets_source.dart';
+import 'package:podcasts/source.dart';
 
 class AppListView extends StatefulWidget {
   const AppListView(
@@ -21,16 +17,20 @@ class AppListView extends StatefulWidget {
   final VoidCallback? backArrowCallback;
 
   @override
-  _AppListViewState createState() => _AppListViewState();
+  AppListViewState createState() => AppListViewState();
 }
 
-class _AppListViewState extends State<AppListView> {
+class AppListViewState extends State<AppListView> {
   final topOffsetNotifier = ValueNotifier<double>(0);
   static const thresholdOffset = 28.0;
+  static final controller = ScrollController();
 
-  @override
-  void initState() {
-    super.initState();
+  static void refreshListView() => controller.jumpTo(0.0);
+
+  _updateTopOffset(double topOffset) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      topOffsetNotifier.value = topOffset;
+    });
   }
 
   @override
@@ -40,10 +40,11 @@ class _AppListViewState extends State<AppListView> {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: NotificationListener(
           onNotification: (ScrollNotification n) {
-            topOffsetNotifier.value = n.metrics.pixels;
+            _updateTopOffset(n.metrics.pixels - 45);
             return true;
           },
           child: ListView(
+              controller: controller,
               padding: EdgeInsets.zero,
               shrinkWrap: true,
               children: widget.children),
@@ -56,6 +57,7 @@ class _AppListViewState extends State<AppListView> {
         child: ValueListenableBuilder<double>(
             valueListenable: topOffsetNotifier,
             builder: (context, topOffset, child) {
+              topOffset < 0 ? topOffset = 0 : topOffset;
               if (topOffset > thresholdOffset) topOffset = thresholdOffset;
               return AppBar(
                 elevation: topOffset >= thresholdOffset ? 3 : 0,
@@ -72,6 +74,7 @@ class _AppListViewState extends State<AppListView> {
                 title: AppText(widget.header,
                     size: 18.w,
                     weight: FontWeight.bold,
+                    alignment: TextAlign.start,
                     color:
                         Colors.black.withOpacity(topOffset / thresholdOffset)),
               );

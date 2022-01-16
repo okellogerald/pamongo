@@ -3,7 +3,8 @@ import '../source.dart';
 class SeriesPageEpisodeTile extends StatelessWidget {
   const SeriesPageEpisodeTile(
       {required this.playCallback,
-      required this.supplements,
+      required this.activeId,
+      required this.playerState,
       required this.index,
       required this.markAsDoneCallback,
       required this.shareCallback,
@@ -14,16 +15,14 @@ class SeriesPageEpisodeTile extends StatelessWidget {
 
   final Episode episode;
   final int index;
-  final Supplements supplements;
+  final IndicatorPlayerState playerState;
+  final String activeId;
   final void Function(int) playCallback;
   final VoidCallback resumeCallback;
   final void Function(String) markAsDoneCallback, shareCallback;
 
   @override
   Widget build(BuildContext context) {
-    final playerState = supplements.playerState;
-    final activeId = supplements.activeId;
-
     final isLoading = playerState.isLoading && activeId == episode.id;
     final isActive = (playerState.isPlaying || playerState.isPaused) &&
         activeId == episode.id;

@@ -48,22 +48,15 @@ class _PlayingEpisodePageState extends State<PlayingEpisodePage> {
               },
               builder: (context, state) {
                 return state.when(
-                    active: _buildContent,
-                    failed: _buildFailed,
-                    initial: _buildInitial);
+                  content: _buildContent,
+                  failed: (content, isHiding, _) =>
+                      _buildContent(content, isHiding),
+                  loading: _buildContent,
+                );
               }),
         ),
       ),
     );
-  }
-
-  Widget _buildFailed(
-      ProgressIndicatorContent content, bool isHiding, AudioError error) {
-    return _buildContent(content, isHiding);
-  }
-
-  Widget _buildInitial(ProgressIndicatorContent content, bool isHiding) {
-    return Container();
   }
 
   _showError(AudioError error) async {

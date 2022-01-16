@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'episode_page_state.dart';
@@ -17,16 +18,14 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$EpisodePageStateTearOff {
   const _$EpisodePageStateTearOff();
 
-  _Loading loading(Episode episode, Supplements supplements) {
+  _Loading loading(EpisodePageSupplements supplements) {
     return _Loading(
-      episode,
       supplements,
     );
   }
 
-  _Content content(Episode episode, Supplements supplements) {
+  _Content content(EpisodePageSupplements supplements) {
     return _Content(
-      episode,
       supplements,
     );
   }
@@ -37,25 +36,24 @@ const $EpisodePageState = _$EpisodePageStateTearOff();
 
 /// @nodoc
 mixin _$EpisodePageState {
-  Episode get episode => throw _privateConstructorUsedError;
-  Supplements get supplements => throw _privateConstructorUsedError;
+  EpisodePageSupplements get supplements => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Episode episode, Supplements supplements) loading,
-    required TResult Function(Episode episode, Supplements supplements) content,
+    required TResult Function(EpisodePageSupplements supplements) loading,
+    required TResult Function(EpisodePageSupplements supplements) content,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Episode episode, Supplements supplements)? loading,
-    TResult Function(Episode episode, Supplements supplements)? content,
+    TResult Function(EpisodePageSupplements supplements)? loading,
+    TResult Function(EpisodePageSupplements supplements)? content,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Episode episode, Supplements supplements)? loading,
-    TResult Function(Episode episode, Supplements supplements)? content,
+    TResult Function(EpisodePageSupplements supplements)? loading,
+    TResult Function(EpisodePageSupplements supplements)? content,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -89,10 +87,9 @@ abstract class $EpisodePageStateCopyWith<$Res> {
   factory $EpisodePageStateCopyWith(
           EpisodePageState value, $Res Function(EpisodePageState) then) =
       _$EpisodePageStateCopyWithImpl<$Res>;
-  $Res call({Episode episode, Supplements supplements});
+  $Res call({EpisodePageSupplements supplements});
 
-  $EpisodeCopyWith<$Res> get episode;
-  $SupplementsCopyWith<$Res> get supplements;
+  $EpisodePageSupplementsCopyWith<$Res> get supplements;
 }
 
 /// @nodoc
@@ -106,31 +103,19 @@ class _$EpisodePageStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? episode = freezed,
     Object? supplements = freezed,
   }) {
     return _then(_value.copyWith(
-      episode: episode == freezed
-          ? _value.episode
-          : episode // ignore: cast_nullable_to_non_nullable
-              as Episode,
       supplements: supplements == freezed
           ? _value.supplements
           : supplements // ignore: cast_nullable_to_non_nullable
-              as Supplements,
+              as EpisodePageSupplements,
     ));
   }
 
   @override
-  $EpisodeCopyWith<$Res> get episode {
-    return $EpisodeCopyWith<$Res>(_value.episode, (value) {
-      return _then(_value.copyWith(episode: value));
-    });
-  }
-
-  @override
-  $SupplementsCopyWith<$Res> get supplements {
-    return $SupplementsCopyWith<$Res>(_value.supplements, (value) {
+  $EpisodePageSupplementsCopyWith<$Res> get supplements {
+    return $EpisodePageSupplementsCopyWith<$Res>(_value.supplements, (value) {
       return _then(_value.copyWith(supplements: value));
     });
   }
@@ -142,12 +127,10 @@ abstract class _$LoadingCopyWith<$Res>
   factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
       __$LoadingCopyWithImpl<$Res>;
   @override
-  $Res call({Episode episode, Supplements supplements});
+  $Res call({EpisodePageSupplements supplements});
 
   @override
-  $EpisodeCopyWith<$Res> get episode;
-  @override
-  $SupplementsCopyWith<$Res> get supplements;
+  $EpisodePageSupplementsCopyWith<$Res> get supplements;
 }
 
 /// @nodoc
@@ -161,18 +144,13 @@ class __$LoadingCopyWithImpl<$Res> extends _$EpisodePageStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? episode = freezed,
     Object? supplements = freezed,
   }) {
     return _then(_Loading(
-      episode == freezed
-          ? _value.episode
-          : episode // ignore: cast_nullable_to_non_nullable
-              as Episode,
       supplements == freezed
           ? _value.supplements
           : supplements // ignore: cast_nullable_to_non_nullable
-              as Supplements,
+              as EpisodePageSupplements,
     ));
   }
 }
@@ -180,16 +158,14 @@ class __$LoadingCopyWithImpl<$Res> extends _$EpisodePageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loading implements _Loading {
-  const _$_Loading(this.episode, this.supplements);
+  const _$_Loading(this.supplements);
 
   @override
-  final Episode episode;
-  @override
-  final Supplements supplements;
+  final EpisodePageSupplements supplements;
 
   @override
   String toString() {
-    return 'EpisodePageState.loading(episode: $episode, supplements: $supplements)';
+    return 'EpisodePageState.loading(supplements: $supplements)';
   }
 
   @override
@@ -197,13 +173,13 @@ class _$_Loading implements _Loading {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Loading &&
-            (identical(other.episode, episode) || other.episode == episode) &&
-            (identical(other.supplements, supplements) ||
-                other.supplements == supplements));
+            const DeepCollectionEquality()
+                .equals(other.supplements, supplements));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, episode, supplements);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(supplements));
 
   @JsonKey(ignore: true)
   @override
@@ -213,30 +189,30 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Episode episode, Supplements supplements) loading,
-    required TResult Function(Episode episode, Supplements supplements) content,
+    required TResult Function(EpisodePageSupplements supplements) loading,
+    required TResult Function(EpisodePageSupplements supplements) content,
   }) {
-    return loading(episode, supplements);
+    return loading(supplements);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Episode episode, Supplements supplements)? loading,
-    TResult Function(Episode episode, Supplements supplements)? content,
+    TResult Function(EpisodePageSupplements supplements)? loading,
+    TResult Function(EpisodePageSupplements supplements)? content,
   }) {
-    return loading?.call(episode, supplements);
+    return loading?.call(supplements);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Episode episode, Supplements supplements)? loading,
-    TResult Function(Episode episode, Supplements supplements)? content,
+    TResult Function(EpisodePageSupplements supplements)? loading,
+    TResult Function(EpisodePageSupplements supplements)? content,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(episode, supplements);
+      return loading(supplements);
     }
     return orElse();
   }
@@ -274,12 +250,10 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements EpisodePageState {
-  const factory _Loading(Episode episode, Supplements supplements) = _$_Loading;
+  const factory _Loading(EpisodePageSupplements supplements) = _$_Loading;
 
   @override
-  Episode get episode;
-  @override
-  Supplements get supplements;
+  EpisodePageSupplements get supplements;
   @override
   @JsonKey(ignore: true)
   _$LoadingCopyWith<_Loading> get copyWith =>
@@ -292,12 +266,10 @@ abstract class _$ContentCopyWith<$Res>
   factory _$ContentCopyWith(_Content value, $Res Function(_Content) then) =
       __$ContentCopyWithImpl<$Res>;
   @override
-  $Res call({Episode episode, Supplements supplements});
+  $Res call({EpisodePageSupplements supplements});
 
   @override
-  $EpisodeCopyWith<$Res> get episode;
-  @override
-  $SupplementsCopyWith<$Res> get supplements;
+  $EpisodePageSupplementsCopyWith<$Res> get supplements;
 }
 
 /// @nodoc
@@ -311,18 +283,13 @@ class __$ContentCopyWithImpl<$Res> extends _$EpisodePageStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? episode = freezed,
     Object? supplements = freezed,
   }) {
     return _then(_Content(
-      episode == freezed
-          ? _value.episode
-          : episode // ignore: cast_nullable_to_non_nullable
-              as Episode,
       supplements == freezed
           ? _value.supplements
           : supplements // ignore: cast_nullable_to_non_nullable
-              as Supplements,
+              as EpisodePageSupplements,
     ));
   }
 }
@@ -330,16 +297,14 @@ class __$ContentCopyWithImpl<$Res> extends _$EpisodePageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Content implements _Content {
-  const _$_Content(this.episode, this.supplements);
+  const _$_Content(this.supplements);
 
   @override
-  final Episode episode;
-  @override
-  final Supplements supplements;
+  final EpisodePageSupplements supplements;
 
   @override
   String toString() {
-    return 'EpisodePageState.content(episode: $episode, supplements: $supplements)';
+    return 'EpisodePageState.content(supplements: $supplements)';
   }
 
   @override
@@ -347,13 +312,13 @@ class _$_Content implements _Content {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Content &&
-            (identical(other.episode, episode) || other.episode == episode) &&
-            (identical(other.supplements, supplements) ||
-                other.supplements == supplements));
+            const DeepCollectionEquality()
+                .equals(other.supplements, supplements));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, episode, supplements);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(supplements));
 
   @JsonKey(ignore: true)
   @override
@@ -363,30 +328,30 @@ class _$_Content implements _Content {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Episode episode, Supplements supplements) loading,
-    required TResult Function(Episode episode, Supplements supplements) content,
+    required TResult Function(EpisodePageSupplements supplements) loading,
+    required TResult Function(EpisodePageSupplements supplements) content,
   }) {
-    return content(episode, supplements);
+    return content(supplements);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Episode episode, Supplements supplements)? loading,
-    TResult Function(Episode episode, Supplements supplements)? content,
+    TResult Function(EpisodePageSupplements supplements)? loading,
+    TResult Function(EpisodePageSupplements supplements)? content,
   }) {
-    return content?.call(episode, supplements);
+    return content?.call(supplements);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Episode episode, Supplements supplements)? loading,
-    TResult Function(Episode episode, Supplements supplements)? content,
+    TResult Function(EpisodePageSupplements supplements)? loading,
+    TResult Function(EpisodePageSupplements supplements)? content,
     required TResult orElse(),
   }) {
     if (content != null) {
-      return content(episode, supplements);
+      return content(supplements);
     }
     return orElse();
   }
@@ -424,12 +389,10 @@ class _$_Content implements _Content {
 }
 
 abstract class _Content implements EpisodePageState {
-  const factory _Content(Episode episode, Supplements supplements) = _$_Content;
+  const factory _Content(EpisodePageSupplements supplements) = _$_Content;
 
   @override
-  Episode get episode;
-  @override
-  Supplements get supplements;
+  EpisodePageSupplements get supplements;
   @override
   @JsonKey(ignore: true)
   _$ContentCopyWith<_Content> get copyWith =>

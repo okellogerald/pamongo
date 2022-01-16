@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'episode.dart';
@@ -263,35 +264,35 @@ class _$_Episode extends _Episode {
       this.description = ''})
       : super._();
 
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String image;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String seriesName;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int duration;
   @override
   final DateTime date;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String id;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String seriesId;
   @override
   final int? position;
-  @JsonKey(defaultValue: 0)
+  @JsonKey()
   @override
   final int episodeNumber;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String title;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String audioUrl;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String description;
 
@@ -305,40 +306,36 @@ class _$_Episode extends _Episode {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Episode &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.seriesName, seriesName) ||
-                other.seriesName == seriesName) &&
-            (identical(other.duration, duration) ||
-                other.duration == duration) &&
-            (identical(other.date, date) || other.date == date) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.seriesId, seriesId) ||
-                other.seriesId == seriesId) &&
-            (identical(other.position, position) ||
-                other.position == position) &&
-            (identical(other.episodeNumber, episodeNumber) ||
-                other.episodeNumber == episodeNumber) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.audioUrl, audioUrl) ||
-                other.audioUrl == audioUrl) &&
-            (identical(other.description, description) ||
-                other.description == description));
+            const DeepCollectionEquality().equals(other.image, image) &&
+            const DeepCollectionEquality()
+                .equals(other.seriesName, seriesName) &&
+            const DeepCollectionEquality().equals(other.duration, duration) &&
+            const DeepCollectionEquality().equals(other.date, date) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.seriesId, seriesId) &&
+            const DeepCollectionEquality().equals(other.position, position) &&
+            const DeepCollectionEquality()
+                .equals(other.episodeNumber, episodeNumber) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.audioUrl, audioUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      image,
-      seriesName,
-      duration,
-      date,
-      id,
-      seriesId,
-      position,
-      episodeNumber,
-      title,
-      audioUrl,
-      description);
+      const DeepCollectionEquality().hash(image),
+      const DeepCollectionEquality().hash(seriesName),
+      const DeepCollectionEquality().hash(duration),
+      const DeepCollectionEquality().hash(date),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(seriesId),
+      const DeepCollectionEquality().hash(position),
+      const DeepCollectionEquality().hash(episodeNumber),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(audioUrl),
+      const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override

@@ -1,10 +1,7 @@
-export 'package:podcasts/models/channel.dart';
-export 'package:podcasts/models/episode.dart';
-export 'package:podcasts/models/progress_indicator_content.dart';
-export 'package:podcasts/models/saved_episode.dart';
-export 'package:podcasts/models/series.dart';
-export 'package:podcasts/models/supplements.dart';
-
-
-
-
+export 'channel.dart';
+export 'episode.dart';
+export 'progress_indicator_content.dart';
+export 'saved_episode.dart';
+export 'series.dart';
+export 'supplements.dart';
+export 'episode_page_supplements.dart';

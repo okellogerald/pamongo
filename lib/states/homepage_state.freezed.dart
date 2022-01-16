@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'homepage_state.dart';
@@ -246,8 +247,8 @@ class _$_Loading implements _Loading {
                 .equals(other.episodeList, episodeList) &&
             const DeepCollectionEquality()
                 .equals(other.seriesList, seriesList) &&
-            (identical(other.supplements, supplements) ||
-                other.supplements == supplements));
+            const DeepCollectionEquality()
+                .equals(other.supplements, supplements));
   }
 
   @override
@@ -255,7 +256,7 @@ class _$_Loading implements _Loading {
       runtimeType,
       const DeepCollectionEquality().hash(episodeList),
       const DeepCollectionEquality().hash(seriesList),
-      supplements);
+      const DeepCollectionEquality().hash(supplements));
 
   @JsonKey(ignore: true)
   @override
@@ -437,8 +438,8 @@ class _$_Failed implements _Failed {
                 .equals(other.episodeList, episodeList) &&
             const DeepCollectionEquality()
                 .equals(other.seriesList, seriesList) &&
-            (identical(other.supplements, supplements) ||
-                other.supplements == supplements));
+            const DeepCollectionEquality()
+                .equals(other.supplements, supplements));
   }
 
   @override
@@ -446,7 +447,7 @@ class _$_Failed implements _Failed {
       runtimeType,
       const DeepCollectionEquality().hash(episodeList),
       const DeepCollectionEquality().hash(seriesList),
-      supplements);
+      const DeepCollectionEquality().hash(supplements));
 
   @JsonKey(ignore: true)
   @override
@@ -627,8 +628,8 @@ class _$_Content implements _Content {
                 .equals(other.episodeList, episodeList) &&
             const DeepCollectionEquality()
                 .equals(other.seriesList, seriesList) &&
-            (identical(other.supplements, supplements) ||
-                other.supplements == supplements));
+            const DeepCollectionEquality()
+                .equals(other.supplements, supplements));
   }
 
   @override
@@ -636,7 +637,7 @@ class _$_Content implements _Content {
       runtimeType,
       const DeepCollectionEquality().hash(episodeList),
       const DeepCollectionEquality().hash(seriesList),
-      supplements);
+      const DeepCollectionEquality().hash(supplements));
 
   @JsonKey(ignore: true)
   @override

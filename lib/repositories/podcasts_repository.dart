@@ -86,9 +86,6 @@ class PodcastsRepository {
             seriesName: series['name']));
       }
 
-/*       final episodeList =
-          await getEpisodes('${root}episode?eager=info&seriesId=$seriesId'); */
-
       return Series.fromJson(series,
           channelName: channel['name'], episodeList: episodeList);
     } on TimeoutException catch (_) {
@@ -100,10 +97,7 @@ class PodcastsRepository {
   }
 
   static Future<List<Episode>> getEpisodes(String url) async {
-    //await Future.delayed(const Duration(seconds: 1));
     final deviceInfo = Hive.box(kDeviceInfoBox).get(kDeviceInfo) as DeviceInfo;
-
-    log(deviceInfo.runtimeType.toString());
 
     try {
       final _url = root + url;
@@ -122,6 +116,7 @@ class PodcastsRepository {
       }
       return episodeList;
     } on TimeoutException catch (_) {
+      log(_.toString());
       throw ApiError.fromType(ApiErrorType.timeout);
     } catch (_) {
       log(_.toString());

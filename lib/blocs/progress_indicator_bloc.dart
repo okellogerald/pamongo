@@ -4,13 +4,11 @@ import '../source.dart';
 class ProgressIndicatorBloc extends Cubit<ProgressIndicatorState> {
   final AudioPlayerService service;
 
-  static bool isExpanded = false;
   static bool shouldUpdateStatusOnInterruptionEnd = true;
-  static final initialContent =
-      ProgressIndicatorContent(episodeList: [Episode(date: DateTime.now())]);
+  static final initialContent = ProgressIndicatorContent.empty();
 
   ProgressIndicatorBloc(this.service)
-      : super(ProgressIndicatorState.initial(initialContent, true)) {
+      : super(ProgressIndicatorState.initial()) {
     service.onAudioPositionChanged.listen((position) {
       _handlePositionStream(position);
     });
@@ -44,23 +42,22 @@ class ProgressIndicatorBloc extends Cubit<ProgressIndicatorState> {
   void share(String id) async => await service.share(ContentType.episode, id);
 
   void _handleContentStream(ProgressIndicatorContent content) {
+    emit(ProgressIndicatorState.loading(state.content, state.isHiding));
+
     final playerState = content.playerState;
 
     if (playerState.hasFailedToBuffer) {
-      emit(ProgressIndicatorState.failed(content, state.isHiding,
-          content.error ?? AudioError.fromType(ErrorType.unknown)));
+      final error = content.error ?? AudioError.fromType(ErrorType.unknown);
+      emit(ProgressIndicatorState.failed(content, state.isHiding, error));
       return;
     }
 
-    if (playerState.isInactive) {
-      emit(ProgressIndicatorState.initial(initialContent, true));
-      return;
-    }
-
-    emit(ProgressIndicatorState.active(content, isExpanded));
+    emit(ProgressIndicatorState.content(content, state.isHiding));
   }
 
   void _handlePositionStream(Duration? position) {
+    emit(ProgressIndicatorState.loading(state.content, state.isHiding));
+
     final content = state.content;
     final episode = content.getCurrentEpisode;
     final duration = episode.duration;
@@ -90,17 +87,18 @@ class ProgressIndicatorBloc extends Cubit<ProgressIndicatorState> {
 
       service.updateProgressTo(_position);
 
-      emit(ProgressIndicatorState.active(
-          state.content.copyWith(
-              currentPosition: _position,
-              bufferedPosition: service.getBufferedPosition),
-          state.isHiding));
+      final content = state.content.copyWith(
+          currentPosition: _position,
+          bufferedPosition: service.getBufferedPosition);
+
+      emit(ProgressIndicatorState.content(content, state.isHiding));
     }
   }
 
   void toggleVisibilityStatus() {
-    isExpanded = !isExpanded;
-    emit(ProgressIndicatorState.active(state.content, !state.isHiding));
+    emit(ProgressIndicatorState.loading(state.content, state.isHiding));
+    final isHiding = !state.isHiding;
+    emit(ProgressIndicatorState.content(state.content, isHiding));
   }
 
   _handleAudioInterruptions(AudioInterruptionEvent event) {

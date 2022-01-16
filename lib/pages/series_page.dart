@@ -102,7 +102,12 @@ class _SeriesPageState extends State<SeriesPage> {
         Padding(
             padding: EdgeInsets.only(right: 10.dw, top: 5.dh),
             child: AppRichText(
-              text: AppText(series.description, size: 16.w, maxLines: 5),
+              text: AppText(
+                series.description,
+                size: 14.w,
+                maxLines: 5,
+                alignment: TextAlign.start,
+              ),
               useToggleExpansionButtons: true,
             )),
       ]),

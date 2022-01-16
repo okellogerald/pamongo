@@ -92,12 +92,12 @@ class _EpisodePageState extends State<EpisodePage> {
             children: [
               AppText(
                 'Other ${supp.otherEpisodes.length == 1 ? 'episode' : 'episodes'} in :',
-                size: 15.w,
+                size: 14.w,
                 color: AppColors.accentColor,
                 weight: FontWeight.w600,
                 alignment: TextAlign.start,
               ),
-              SizedBox(height: 10.dh),
+              SizedBox(height: 5.dh),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

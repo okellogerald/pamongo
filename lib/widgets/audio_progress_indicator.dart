@@ -97,10 +97,7 @@ class AudioProgressIndicatorState extends State<AudioProgressIndicator> {
                             fit: BoxFit.contain, height: 25.dh),
                       )
                     : IconButton(
-                        onPressed: () {
-                          bloc.togglePlayerStatus();
-                          log('reached here');
-                        },
+                        onPressed: bloc.togglePlayerStatus,
                         padding: EdgeInsets.zero,
                         icon: Icon(
                             playerState.isPlaying

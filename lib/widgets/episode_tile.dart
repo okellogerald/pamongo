@@ -27,7 +27,7 @@ class EpisodeTile extends StatelessWidget {
 
     final text = AppText(
       episode.description,
-      size: 15.w,
+      size: 14.w,
       color: AppColors.textColor2,
       maxLines: isOnHomepage ? 3 : 10,
       alignment: TextAlign.start,

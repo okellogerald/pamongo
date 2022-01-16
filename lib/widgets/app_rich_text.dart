@@ -36,7 +36,10 @@ class AppRichText extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             isExpanded
-                ? RichText(text: text.toTextSpan(), textAlign: text.alignment, )
+                ? RichText(
+                    text: text.toTextSpan(),
+                    textAlign: text.alignment,
+                  )
                 : text,
             Row(
               mainAxisSize: MainAxisSize.max,
@@ -45,7 +48,7 @@ class AppRichText extends StatelessWidget {
                 GestureDetector(
                   onTap: () => isExpandNotifier.value = !isExpandNotifier.value,
                   child: AppText(isExpanded ? 'see less' : 'see more',
-                      size: 16.w,
+                      size: 14.w,
                       color: AppColors.accentColor,
                       weight: FontWeight.w600),
                 ),

@@ -27,19 +27,20 @@ class SeriesPageEpisodeTile extends StatelessWidget {
     final isActive = (playerState.isPlaying || playerState.isPaused) &&
         activeId == episode.id;
 
-    return Padding(
+    return Container(
       padding: EdgeInsets.only(left: 18.dw, right: 18.dw),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: 10.dh),
           Padding(
-            padding: EdgeInsets.only(top: 10.dh, bottom: 5.dh),
+            padding: EdgeInsets.only(bottom: 5.dh),
             child: AppText(episode.getDate,
-                size: 14.w, color: AppColors.textColor2),
+                size: 12.w, color: AppColors.textColor2),
           ),
           AppText(
             'Ep. ${episode.episodeNumber} : ${episode.title}',
-            size: 15.w,
+            size: 14.w,
             color: AppColors.textColor2,
             weight: FontWeight.w600,
             alignment: TextAlign.start,

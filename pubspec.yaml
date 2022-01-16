@@ -46,10 +46,7 @@ flutter:
     - assets/icons/
 
   fonts:
-    - family: Louis
+    - family: WorkSans
       fonts:
-        - asset: assets/fonts/louis.ttf
-    - family: LondonTube
-      fonts:
-        - asset: assets/fonts/LondonTube.ttf
-
+        - asset: assets/fonts/WorkSans.ttf
+  

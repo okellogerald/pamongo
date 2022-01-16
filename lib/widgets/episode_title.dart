@@ -50,7 +50,7 @@ class _EpisodeTitleState extends State<EpisodeTitle> {
                 AppText(
                   formatted,
                   weight: FontWeight.w400,
-                  size: 13.w,
+                  size: 12.w,
                   color: AppColors.textColor2,
                 )
               ]),
@@ -58,12 +58,13 @@ class _EpisodeTitleState extends State<EpisodeTitle> {
       ]),
       Padding(
         padding: EdgeInsets.only(top: 7.dh, bottom: 3.dh, right: 5.dw),
-        child: AppText(widget.title,
-            weight: FontWeight.w600,
-            size: 15.w,
-            maxLines: 2,
-            family: 'Louis',
-            color: AppColors.textColor),
+        child: AppText(
+          widget.title,
+          weight: FontWeight.bold,
+          size: 14.w,
+          maxLines: 2,
+          color: AppColors.textColor,
+        ),
       ),
     ]);
   }

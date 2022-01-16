@@ -95,9 +95,10 @@ class _ChannelPageState extends State<ChannelPage> {
           child: AppRichText(
             text: AppText(
               channel.description,
-              size: 16.w,
+              size: 14.w,
               maxLines: 4,
-              color: AppColors.textColor2,
+              color: AppColors.textColor,
+              alignment: TextAlign.start,
             ),
             useToggleExpansionButtons: true,
           ),
@@ -115,7 +116,11 @@ class _ChannelPageState extends State<ChannelPage> {
           Container(height: 1, color: AppColors.dividerColor),
           Padding(
             padding: EdgeInsets.fromLTRB(18.dw, 10.dw, 10.dh, 8.dh),
-            child: AppText('Channel Series', size: 18.w),
+            child: AppText(
+              'Channel Series',
+              size: 20.w,
+              weight: FontWeight.w600,
+            ),
           ),
           ListView.builder(
               itemCount: channel.seriesList.length,

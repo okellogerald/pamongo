@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               scaffoldBackgroundColor: AppColors.backgroundColor,
-              fontFamily: 'Product Sans',
+              fontFamily: kFontFam,
             ),
             home: _buildHome()));
   }

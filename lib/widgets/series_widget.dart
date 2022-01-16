@@ -37,6 +37,7 @@ class _SeriesWidgetState extends State<SeriesWidget> {
                     widget.series.name,
                     size: 14.w,
                     weight: FontWeight.w600,
+                    color: AppColors.textColor2,
                     maxLines: 2,
                   ),
                   AppText('Episodes : ${widget.series.totalNumberOfEpisodes}',
@@ -47,8 +48,13 @@ class _SeriesWidgetState extends State<SeriesWidget> {
           ],
         ),
         SizedBox(height: 7.dh),
-        AppText(widget.series.description,
-            size: 15.w, color: AppColors.textColor2, maxLines: 3),
+        AppText(
+          widget.series.description,
+          size: 14.w,
+          color: AppColors.textColor2,
+          maxLines: 3,
+          alignment: TextAlign.start,
+        ),
         SizedBox(height: 5.dh),
         SeriesActionButtons(
           shareCallback: widget.shareCallback,

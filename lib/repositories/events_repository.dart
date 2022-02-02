@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:podcasts/constants.dart';
+
+import '../secrets.dart';
 
 class EventsRepository {
   ///returns the status code of the http response that signifies whether the
